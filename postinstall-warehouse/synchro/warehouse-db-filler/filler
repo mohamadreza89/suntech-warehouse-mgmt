@@ -1,0 +1,40 @@
+#!usr/bin/env php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: m.pishdad
+ * Date: 11/3/2018
+ * Time: 2:34 PM
+ */
+
+
+require __DIR__.'/vendor/autoload.php';
+require __DIR__.'/Process.php';
+require_once __DIR__.'/Record.php';
+
+
+require_once('../../approot.inc.php');
+require_once('../../application/application.inc.php');
+require_once('../../application/itopwebpage.class.inc.php');
+require_once('../../application/wizardhelper.class.inc.php');
+
+require_once('../../application/startup.inc.php');
+
+
+
+use Symfony\Component\Console\Application;
+
+
+
+$app = new Application();
+
+$app->add(new Process());
+try{
+    $app->run();
+}catch(Exception $e)
+{
+    echo $e->getMessage();
+}
+
+
+
